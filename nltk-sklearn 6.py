@@ -13,6 +13,8 @@ from sklearn.metrics import confusion_matrix, plot_confusion_matrix, \
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import utils
+import tensorflow as tf
+import tf.keras as keras
 
 
 def get_wordnet_pos(word):
@@ -83,7 +85,8 @@ print('Done')
 
 # LSA
 print('Decomposing the Tf-idf binary array... ', end=' .')
-decomposer = TruncatedSVD(100)
+n_features = 100
+decomposer = TruncatedSVD(n_features)
 dc_tfidf = decomposer.fit_transform(tfidf)
 del tfidf
 print('Done')
@@ -99,12 +102,17 @@ del dc_tfidf
 train_x, test_x, train_y, test_y = split_data
 sample_weights = utils.get_scores(class_counts, classes, train_y)
 
-# training the Random Forest
-print('Training the classifier... ', end=' .')
-classifier = RandomForestClassifier()
+# defining the NN
+
+classifier = keras.models.Sequential(input_shape=(None, n_features))
+classifier.add( keras.layers.Dense(512, ac))
+classifier.add( keras.layers.Dense(5, activation='softmax'))
+classifier.compile(loss='categorical crossentropy')
 classifier.fit(train_x, train_y, sample_weights)
-print('Done')
-estimates = classifier.predict(test_x)
+
+# training the NN
+
+classifier.predict(test_x)
 print('Building the confusion matrix...', end=' .')
 cm = confusion_matrix(test_y, estimates, labels=[1.0, 2.0, 3.0, 4.0, 5.0])
 print('Done')

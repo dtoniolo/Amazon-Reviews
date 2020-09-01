@@ -13,8 +13,6 @@ from sklearn.metrics import confusion_matrix, plot_confusion_matrix, \
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import utils
-import tensorflow as tf
-import tf.keras as tf
 
 
 def get_wordnet_pos(word):
@@ -101,7 +99,7 @@ del dc_tfidf
 train_x, test_x, train_y, test_y = split_data
 sample_weights = utils.get_scores(class_counts, classes, train_y)
 
-# training the NN
+# training the Random Forest
 print('Training the classifier... ', end=' .')
 classifier = RandomForestClassifier()
 classifier.fit(train_x, train_y, sample_weights)
