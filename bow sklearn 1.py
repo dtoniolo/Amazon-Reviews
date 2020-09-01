@@ -4,7 +4,12 @@ import json
 from tqdm import tqdm
 import numpy as np
 import nltk
-
+from sklearn.naive_bayes import BernoulliNB
+from sklearn.metrics import confusion_matrix, plot_confusion_matrix, \
+                            classification_report
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+from utils import print_class_counts
 
 # read file
 gzipped = False
@@ -66,10 +71,28 @@ for j, review in enumerate(tqdm(reviews)):
         i = np.where(vocabulary == token),
         i = i[0]
         bow[i, j] = True
+scores = [review['overall'] for review in reviews]
+print_class_counts(scores)
+
+# train test split
+split_data = train_test_split(bow.T, scores, test_size=1/3, shuffle=True,
+                              stratify=scores)
+train_x, test_x, train_y, test_y = split_data
 
 # training Naïve Bayes
-print('Training the classifier... ')
-train_set = [(dict(zip(vocabulary, feat)), str(review['overall']))
-             for (feat, review) in zip(bow.T, reviews)]
-classifier = nltk.NaiveBayesClassifier.train(train_set)
-print('Accuracy', nltk.classify.accuracy(classifier, train_set))
+print('Training the classifier... ', end=' .')
+classifier = BernoulliNB()
+classifier.fit(train_x, train_y)
+print('Done')
+estimates = classifier.predict(test_x)
+print('Building the confusion matrix...', end=' .')
+cm = confusion_matrix(test_y, estimates, labels=[1.0, 2.0, 3.0, 4.0, 5.0])
+print('Done')
+
+fig, ax = plt.subplots()
+plot_confusion_matrix(classifier, test_x, test_y, labels=[1.0, 2.0, 3.0, 4.0,
+                      5.0], ax=ax)
+ax.set_title('Confusion Matrix')
+fig.show()
+
+print(classification_report(test_y, estimates))
