@@ -18,7 +18,6 @@ def read_file(filename):
     reviews: list
         List of reviews
     """
-    filename = '../Clothing_Shoes_and_Jewelry_5.json'
     if filename.endswith('gz'):
         file_reader = gzip.open(filename, 'r')
         reviews = [json.loads(review.decode('utf-8')) for review in file_reader]
