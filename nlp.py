@@ -1,6 +1,6 @@
 import nltk
 from nltk.corpus import wordnet
-import tqdm
+from tqdm import tqdm
 import string
 
 
