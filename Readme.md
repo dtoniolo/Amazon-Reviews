@@ -36,16 +36,16 @@ The data can be found at <a href="http://snap.stanford.edu/data/amazon/productGr
 - _Current Studies_: Student at the Master Degree in Data Science, University of Milano Bicocca
 - _Background_: Bachelor Degree in Physics, University of Milano Bicocca
 <p align = "center">
-  <a href = "https://www.linkedin.com/in/dtoniolo/"><img src="https://techmarketingbuffalo.com/wp-content/uploads/2013/11/linkedin-logo-high-res-1254-1024x1024.jpg" width = "4%"></a>
-  <a href = "https://github.com/dtoniolo"><img src="http://pngimg.com/uploads/github/github_PNG40.png" width = "5%"></a>
+  <a href = "https://www.linkedin.com/in/dtoniolo/"><img src="https://techmarketingbuffalo.com/wp-content/uploads/2013/11/linkedin-logo-high-res-1254-1024x1024.jpg" width = "2.3%"></a>
+  <a href = "https://github.com/dtoniolo"><img src="http://pngimg.com/uploads/github/github_PNG40.png" width = "2.5%"></a>
 </p>
 
 **Lorenzo Camaione**
 - _Current Studies_: Student at the Master Degree in Data Science, University of Milano Bicocca
 - _Background_: Bachelor Degree in Computer Science, University of L'Aquila
 <p align = "center">
-  <a href="https://www.linkedin.com/in/lorenzo-camaione/"><img src="https://techmarketingbuffalo.com/wp-content/uploads/2013/11/linkedin-logo-high-res-1254-1024x1024.jpg" width="4%"></a>
-  <a href="https://github.com/lorenzo-camaione"><img src="http://pngimg.com/uploads/github/github_PNG40.png" width="5%"></a>
+  <a href="https://www.linkedin.com/in/lorenzo-camaione/"><img src="https://techmarketingbuffalo.com/wp-content/uploads/2013/11/linkedin-logo-high-res-1254-1024x1024.jpg" width="2.3%"></a>
+  <a href="https://github.com/lorenzo-camaione"><img src="http://pngimg.com/uploads/github/github_PNG40.png" width="2.5%"></a>
 </p>
 
 ### Acknowledgements
