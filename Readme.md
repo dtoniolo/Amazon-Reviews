@@ -1,9 +1,9 @@
 # Wish Upon a Star
 <div style="display: flex"">
-  <div style="flex: 50%; padding: 5px">
+  <div style="flex: 30%; padding: 5px">
     <a href="http://datascience.disco.unimib.it/it/"><img src="images/datasience.png"  alt="Data Science Master"></a>
   </div>
-  <div style="flex: 50%; padding: 5px">
+  <div style="flex: 30%; padding: 5px">
     <p align="right">
       <a href="https://www.unimib.it"><img src="images/bicocca_logo.jpg" width="18%"  alt="Bicocca Logo"></a>
     </p>
@@ -23,7 +23,7 @@
 
 <!-- /TOC -->
 ## Overview
-This repository hosts the code for the final project for the Text Mining and Search course. The task we aim to solve is a binary classification of Amazon product reviews from the _Clothing, Shoes and Juweley_ categoryinto positive and negative using the text of the review as the input data.
+This repository hosts the code for the final project for the Text Mining and Search course. The task we aim to solve is a binary classification of Amazon product reviews from the _Clothing, Shoes and Jewellery_ category into positive and negative using the text of the review as the input data.
 
 ## How to Use
 In order to explore our work, please refer to the `Main Notebook.ipynb` file. This notebook hold all the code, NLP processing and classification models used presented in a complete way.
@@ -52,7 +52,7 @@ The data can be found at <a href="http://snap.stanford.edu/data/amazon/productGr
 
 **Lorenzo Camaione**
 - _Current Studies_: Student at the Master Degree in Data Science, University of Milano Bicocca
-- _Background_: Bachelor Degree in Computer Science, University of Aquila
+- _Background_: Bachelor Degree in Computer Science, University of L'Aquila
 <p align = "center">
   <a href="https://www.linkedin.com/in/lorenzo-camaione/"><img src="https://techmarketingbuffalo.com/wp-content/uploads/2013/11/linkedin-logo-high-res-1254-1024x1024.jpg" width="4%"></a>
   <a href="https://github.com/lorenzo-camaione"><img src="http://pngimg.com/uploads/github/github_PNG40.png" width="5%"></a>
