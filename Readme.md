@@ -1,16 +1,6 @@
 # Wish Upon a Star
-<div style="display: flex"">
-  <div style="flex: 30%; padding: 5px">
-    <a href="http://datascience.disco.unimib.it/it/"><img src="images/datasience.png"  alt="Data Science Master"></a>
-  </div>
-  <div style="flex: 30%; padding: 5px">
-    <p align="right">
-      <a href="https://www.unimib.it"><img src="images/bicocca_logo.jpg" width="18%"  alt="Bicocca Logo"></a>
-    </p>
-  </div>
-</div>
-<p align="center">
-  <img src="images/word-cloud.jpg" width="70%" alt=Word Cloud"></a>
+<p align = "center">
+  <a href="http://datascience.disco.unimib.it/it/"><img src ="https://raw.githubusercontent.com/malborroni/Foundations_of_Computer-Science/master/images/DSunimib.png" width = "100%"></a>
 </p>
 
 <!-- TOC -->
@@ -57,3 +47,6 @@ The data can be found at <a href="http://snap.stanford.edu/data/amazon/productGr
   <a href="https://www.linkedin.com/in/lorenzo-camaione/"><img src="https://techmarketingbuffalo.com/wp-content/uploads/2013/11/linkedin-logo-high-res-1254-1024x1024.jpg" width="4%"></a>
   <a href="https://github.com/lorenzo-camaione"><img src="http://pngimg.com/uploads/github/github_PNG40.png" width="5%"></a>
 </p>
+
+### Acknowledgements
+Thanks to [@malborroni](https://github.com/malborroni) for the this awesome readme template.
