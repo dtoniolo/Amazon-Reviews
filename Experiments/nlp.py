@@ -77,6 +77,7 @@ def remove_stopwords(docs):
         for token in doc:
             if token not in stop_words:
                 modified_docs[-1].append(token)
+    return modified_docs
 
 
 def lemmatize(docs):
@@ -97,7 +98,7 @@ def lemmatize(docs):
     print('Lemmatizing:')
     global wnl
     lemmatized_docs = list()
-    for doc in docs:
+    for doc in tqdm(docs):
         lemmatized_docs.append(list())
         for token in doc:
             pos = get_wordnet_pos(token)

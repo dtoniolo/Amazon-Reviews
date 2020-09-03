@@ -7,7 +7,7 @@ import nltk
 from nltk.corpus import wordnet
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import TruncatedSVD
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
 from sklearn.metrics import confusion_matrix, plot_confusion_matrix, \
                             classification_report
 from sklearn.model_selection import train_test_split
@@ -36,7 +36,7 @@ else:
     with open(filename, 'r') as f:
         reviews = [json.loads(review) for review in f.readlines()]
 
-#reviews = reviews[:100]
+reviews = reviews[:100]
 
 # word tokenizer
 print('Tokenizing:')
@@ -97,12 +97,12 @@ split_data = train_test_split(dc_tfidf, scores, test_size=1/3, shuffle=True,
                               stratify=scores)
 del dc_tfidf
 train_x, test_x, train_y, test_y = split_data
-sample_weights = utils.get_scores(class_counts, classes, train_y)
 
 # training the Random Forest
 print('Training the classifier... ', end=' .')
-classifier = RandomForestClassifier()
-classifier.fit(train_x, train_y, sample_weights)
+classifier = SVC(C=0.1, class_weight='balanced', gamma=100, kernel='linear',
+                 probability=True, random_state=8, tol=0.01)
+classifier.fit(train_x, train_y)
 print('Done')
 estimates = classifier.predict(test_x)
 print('Building the confusion matrix...', end=' .')

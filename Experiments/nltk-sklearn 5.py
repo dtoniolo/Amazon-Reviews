@@ -13,8 +13,6 @@ from sklearn.metrics import confusion_matrix, plot_confusion_matrix, \
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import utils
-import tensorflow as tf
-import tf.keras as keras
 
 
 def get_wordnet_pos(word):
@@ -78,6 +76,15 @@ print('Building the Tf-idf representation...', end=' .')
 reviewsText = [review['reviewText3'] for review in reviews]
 scores = [review['overall'] for review in reviews]
 scores = np.array(scores)
+binary = True
+if binary:
+    neg = np.where(scores < 3.0)[0]
+    pos = np.where(scores > 3.0)[0]
+    neu = np.where(scores == 3.0)[0]
+    scores[neg] = 0
+    scores[pos] = 1
+    reviewsText = reviewsText[np.logical_not(neu)]
+    scores = scores[np.logical_and(neu)]
 del reviews
 vectorizer = TfidfVectorizer(lowercase=False)
 tfidf = vectorizer.fit_transform(reviewsText)
@@ -85,8 +92,7 @@ print('Done')
 
 # LSA
 print('Decomposing the Tf-idf binary array... ', end=' .')
-n_features = 100
-decomposer = TruncatedSVD(n_features)
+decomposer = TruncatedSVD(100)
 dc_tfidf = decomposer.fit_transform(tfidf)
 del tfidf
 print('Done')
@@ -102,17 +108,12 @@ del dc_tfidf
 train_x, test_x, train_y, test_y = split_data
 sample_weights = utils.get_scores(class_counts, classes, train_y)
 
-# defining the NN
-
-classifier = keras.models.Sequential(input_shape=(None, n_features))
-classifier.add( keras.layers.Dense(512, ac))
-classifier.add( keras.layers.Dense(5, activation='softmax'))
-classifier.compile(loss='categorical crossentropy')
+# training the Random Forest
+print('Training the classifier... ', end=' .')
+classifier = RandomForestClassifier()
 classifier.fit(train_x, train_y, sample_weights)
-
-# training the NN
-
-classifier.predict(test_x)
+print('Done')
+estimates = classifier.predict(test_x)
 print('Building the confusion matrix...', end=' .')
 cm = confusion_matrix(test_y, estimates, labels=[1.0, 2.0, 3.0, 4.0, 5.0])
 print('Done')

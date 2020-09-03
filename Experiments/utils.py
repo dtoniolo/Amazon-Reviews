@@ -155,3 +155,33 @@ def get_class_scores(classes=None, counts=None):
     weights = 1/counts
     weights = weights / weights.sum()
     return weights
+
+
+def transform_to_binary_classification(docs, scores):
+    """Transforms the multi class problem into a binary class
+
+    Parameters
+    ----------
+    docs :  list
+        List of documents.
+    scores : np 1D array
+        Array containing the class of each datum.
+
+    Returns
+    -------
+    docs :  list
+        List of documents without those corrisponding to non relevant classes.
+    scores : np 1D array
+        Array containing the binarized classes.
+
+    """
+    neg = np.where(scores < 3.0)[0]
+    pos = np.where(scores > 3.0)[0]
+    not_neu = np.where(scores != 3.0)[0]
+    scores[neg] = 0
+    scores[pos] = 1
+    scores = scores[not_neu]
+    new_docs = list()
+    for i in not_neu:
+        new_docs.append(docs[i])
+    return new_docs, scores
